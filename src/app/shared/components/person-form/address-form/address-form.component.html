@@ -1,0 +1,53 @@
+<form name="addressForm" role="form" [formGroup]="addressFormGroup" class="totvs-form">
+  <mat-form-field>
+    <label>Tipo de Endereço: </label>
+    <mat-select formControlName="addressType">
+      <mat-option *ngFor="let type of addressTypes | enumToKeyValuePairArray" [value]="type.key"> {{ type.value }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field >
+    <div>
+      <label>Rua:</label >
+      <input matInput formControlName="street">
+    </div>
+  </mat-form-field>
+
+  <mat-form-field >
+    <div>
+      <label>Bairro:</label>
+      <input matInput formControlName="district">
+    </div>
+  </mat-form-field>
+
+  <mat-form-field>
+    <div>
+      <label>Cidade:</label>
+      <input matInput formControlName="city">
+    </div>
+  </mat-form-field>
+
+  <mat-form-field>
+    <div>
+      <label>Estado:</label>
+      <input matInput formControlName="state">
+    </div>
+  </mat-form-field>
+
+  <mat-form-field>
+    <div>
+      <label>País:</label>
+      <input matInput formControlName="country">
+    </div>
+  </mat-form-field>
+
+  <mat-form-field>
+    <div>
+      <label>CEP:</label>
+      <input matInput formControlName="zipCode">
+    </div>
+  </mat-form-field>
+
+</form>
+
+

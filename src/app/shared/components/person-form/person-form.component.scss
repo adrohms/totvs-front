@@ -1,0 +1,64 @@
+@use '/src/themes/colors' as colors;
+
+.totvs-form-card {
+  margin-bottom: 24px;
+}
+
+.totvs-person-form {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 8px;
+}
+
+.totvs-form-title {
+  margin: 8px;
+}
+
+.totvs-form-array-block {
+  padding: 8px;
+  margin: 16px;
+
+}
+
+.totvs-form-group-block {
+  margin: 16px;
+  display: flex;
+  border-radius: 8px;
+  position: relative;
+  align-content: center;
+
+  &  .totvs-remove-card-header {
+    background-color: colors.$neutral;
+    height: 56px;
+    border-radius: 12px 12px 0px 0px;
+
+
+    & .remove-form-button {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+    }
+
+  }
+
+  & .totvs-child-form {
+    padding: 8px;
+
+  }
+
+}
+
+.add-form-button {
+  margin: 0px 0px 16px 16px;
+
+  button {
+    background-color: colors.$accent;
+  }
+}
+
+
+
+
+

@@ -1,0 +1,17 @@
+<form name="addressForm" role="form" [formGroup]="phoneFormGroup" class="totvs-form">
+  <mat-form-field>
+    <label>Tipo de Contato: </label>
+    <mat-select formControlName="phoneType">
+        <mat-option *ngFor="let type of phoneTypes | enumToKeyValuePairArray" [value]="type.key"> {{ type.value }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <div>
+      <label>Número:</label >
+      <input matInput formControlName="number">
+    </div>
+  </mat-form-field>
+</form>
+
+

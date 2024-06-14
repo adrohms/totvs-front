@@ -1,0 +1,33 @@
+<mat-card class="totvs-login-card" appearance="raised">
+  <mat-card-header class="totvs-card-header">
+    <mat-card-title>Login</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="loginForm" (ngSubmit)="authenticate()">
+
+      <div class="totvs-form-fields">
+        <mat-form-field>
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="totvs@examplo.com" formControlName="email" required>
+          <mat-error></mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Senha</mat-label>
+          <input matInput type="password" formControlName="password" required>
+          <mat-error></mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="totvs-submit-button">
+        <button mat-flat-button color="primary" type="submit">Entrar</button>
+      </div>
+
+      <mat-divider style="margin-bottom: 8px;"></mat-divider>
+      <div class="totvs-recover-register">
+        <button mat-stroked-button color="primary" routerLink="/account/register">Registrar</button>
+        <button mat-stroked-button color="primary" routerLink="/account/recover-password">Esqueci minha senha</button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

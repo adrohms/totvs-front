@@ -1,0 +1,35 @@
+
+<mat-dialog-content class="mat-typography">
+  <div>
+    <h1> Formulário de Cliente </h1>
+  </div>
+  <div>
+    <form [formGroup]="clientFormGroup" (ngSubmit)="saveClient()" class="totvs-form">
+      <div class="totvs-client-form-fields">
+        <mat-form-field>
+          <label>Origem do Cliente: </label>
+          <mat-select formControlName="origin">
+            <mat-option *ngFor="let type of originType | enumToKeyValuePairArray" [value]="type.key"> {{ type.value }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <label>Interesse do Cliente: </label>
+          <mat-select formControlName="interest">
+            <mat-option *ngFor="let type of interestType | enumToKeyValuePairArray" [value]="type.key"> {{ type.value }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <totvs-person-form [personFormGroup]="personFormGroup"></totvs-person-form>
+      </div>
+      <div>
+        <button mat-raised-button color="secc" type="submit" color="accent">Salvar</button>
+      </div>
+    </form>
+
+  </div>
+
+
+</mat-dialog-content>

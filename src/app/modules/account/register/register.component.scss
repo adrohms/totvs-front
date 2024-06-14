@@ -1,0 +1,38 @@
+@use '/src/themes/colors' as colors;
+
+
+.totvs-register-card {
+  max-width: 70%;
+  margin: auto;
+  margin-top: 128px;
+  margin-bottom: 128px;
+  background-color: colors.$neutral-light;
+
+}
+
+.totvs-card-header {
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.totvs-submit-register-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.totvs-card-footer {
+  margin-top: 16px;
+}
+
+.totvs-register-form-card {
+
+  padding: 8px 8px 24px 8px;
+  margin: 16px 0 16px 0;
+
+  & .totvs-register-form-inputs {
+    display: flex;
+    gap: 8px;
+    flex-direction: row;
+  }
+
+}

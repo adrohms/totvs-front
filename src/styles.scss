@@ -1,0 +1,18 @@
+@use '@angular/material' as mat;
+@use '/src/themes/themes';
+@use '/src/themes/colors' as colors;
+
+@include mat.core();
+
+html, body { height: 100%; background-color: #fdf6e9;}
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; line-height: 1.6;}
+
+$totvs-light-theme: mat.define-light-theme((
+  color: (
+    primary: mat.define-palette(themes.$totvs-primary),
+    accent: mat.define-palette(themes.$totvs-accent),
+  ),
+  density: 0
+));
+
+@include mat.all-component-themes($totvs-light-theme);

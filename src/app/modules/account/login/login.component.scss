@@ -1,0 +1,39 @@
+@use '/src/themes/colors' as colors;
+
+.totvs-login-card {
+  width: fit-content;
+  margin: auto;
+  margin-top: 128px;
+}
+
+.totvs-card-header {
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.totvs-form-fields {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+
+.totvs-submit-button {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.totvs-recover-register {
+  display: flex;
+  justify-content: center;
+  button {
+    scale: 0.87;
+  }
+
+}
+
+.totvs-card-footer {
+  margin-top: 16px;
+}
+

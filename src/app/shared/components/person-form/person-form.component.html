@@ -1,0 +1,83 @@
+<form role="form" class="totvs-form" [formGroup]="personFormGroup" (ngSubmit)="test()">
+
+  <mat-card class="totvs-form-card">
+    <h2 class="totvs-form-title">Dados Pessoais</h2>
+    <div class="totvs-person-form">
+      <mat-form-field>
+        <label>Tipo de Pessoa: </label>
+        <mat-select formControlName="personType" [(ngModel)]="selectedPersonType">
+          <mat-option *ngFor="let type of personTypes | enumToKeyValuePairArray;" [value]="type.key">
+            {{type.value}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <div>
+          <label>Nome:</label>
+          <input matInput formControlName="name">
+        </div>
+      </mat-form-field>
+
+      <mat-form-field>
+        <div>
+          <label>Email:</label >
+          <input matInput formControlName="email" type="email">
+        </div>
+      </mat-form-field>
+
+      <mat-form-field *ngIf="selectedPersonType">
+        <div *ngIf="selectedPersonType == 'NATURAL_PERSON'; else elseBlock">
+          <label>CPF</label>
+          <input matInput formControlName="taxId" totvsCpfFormatter>
+        </div>
+        <ng-template #elseBlock>
+          <label>CNPJ</label>
+          <input matInput formControlName="taxId" totvsCnpjFormatter>
+        </ng-template>
+      </mat-form-field>
+    </div>
+  </mat-card>
+
+  <mat-card class="totvs-form-card">
+    <h2 class="totvs-form-title"> Contatos </h2>
+    <mat-card *ngFor="let phoneFormGroup of phonesFormGroupArray; let i = index" class="totvs-form-group-block">
+      <div class="totvs-remove-card-header">
+        <button class="remove-form-button" mat-mini-fab type="button" color="primary" matTooltip="Remover contato" (click)="removeSelectedPhone(i)">
+          <mat-icon>remove</mat-icon>
+        </button>
+      </div>
+      <div class="totvs-child-form">
+        <totvs-phone-form [phoneFormGroup]="phoneFormGroup"></totvs-phone-form>
+      </div>
+    </mat-card>
+
+    <div class="add-form-button">
+      <button mat-raised-button type="button" color="primary" (click)="addNewPhone()">
+        <mat-icon>add</mat-icon>
+        <span>Adicionar Número de Contato</span>
+      </button>
+    </div>
+  </mat-card>
+
+  <mat-card class="totvs-form-card">
+    <h2 class="totvs-form-title"> Endereços </h2>
+    <mat-card *ngFor="let addressFormGroup of addressesFormGroupArray; let i = index" class="totvs-form-group-block">
+      <div class="totvs-remove-card-header">
+        <button class="remove-form-button" mat-mini-fab type="button" color="primary" matTooltip="Remover endereço" (click)="removeSelectedAddress(i)">
+          <mat-icon>remove</mat-icon>
+        </button>
+      </div>
+      <div class="totvs-child-form">
+        <totvs-address-form [addressFormGroup]="addressFormGroup"></totvs-address-form>
+      </div>
+    </mat-card>
+
+    <div class="add-form-button">
+      <button mat-raised-button color="primary" type="button" (click)="addNewAddress()">
+        <mat-icon>add</mat-icon>
+        <span>Adicionar Endereço</span>
+      </button>
+    </div>
+  </mat-card>
+</form>

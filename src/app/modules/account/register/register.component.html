@@ -1,0 +1,41 @@
+<mat-card class="totvs-register-card" appearance="raised">
+  <mat-card-header class="totvs-card-header">
+    <mat-card-title>Formulário de Cadastro</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="registrationFormGroup" (ngSubmit)="register()" >
+      <div>
+        <totvs-person-form [personFormGroup]="personFormGroup"></totvs-person-form>
+      </div>
+
+      <mat-card class="totvs-register-form-card">
+        <h2> Dados de Acesso</h2>
+
+        <div style="display: flex; flex-direction: row; gap: 8px; align-content: center;">
+          <mat-icon color="success">info</mat-icon>
+          <h3>O login de acesso será o e-mail cadastrado!</h3>
+        </div>
+
+        <div class="totvs-register-form-inputs">
+          <mat-form-field>
+            <mat-label>Senha</mat-label>
+            <input matInput type="password" formControlName="password" >
+            <mat-error></mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Repita a senha</mat-label>
+            <input matInput type="password" >
+            <mat-error></mat-error>
+          </mat-form-field>
+
+        </div>
+
+        <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
+      </mat-card>
+      <div class="totvs-submit-register-buttons">
+        <button mat-raised-button color="secc" type="submit" color="primary">Salvar</button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
