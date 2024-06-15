@@ -11,6 +11,12 @@
   justify-content: center;
 }
 
+mat-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
 .totvs-client-filter {
   display: flex;
   gap: 16px;

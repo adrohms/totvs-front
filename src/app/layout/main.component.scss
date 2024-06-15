@@ -56,7 +56,7 @@
 
 .totvs-menu-item {
   margin-left: auto;
-  background-color: #261640;
+  background-color: colors.$yellow;
   display: flex;
   align-items: center;
   height: 100%;
@@ -114,7 +114,7 @@
   flex-direction: column;
 
   a:hover {
-    background-color: colors.$accent;
+    background-color: colors.$yellow;
     .totvs-list-content {
       color: white;
     }

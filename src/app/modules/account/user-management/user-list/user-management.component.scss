@@ -10,3 +10,20 @@
   align-items: center;
   justify-content: center;
 }
+
+mat-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.totvs-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.totvs-form-filter {
+  display: flex;
+  gap: 16px;
+}

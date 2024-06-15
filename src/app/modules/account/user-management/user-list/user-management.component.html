@@ -7,15 +7,11 @@
     <mat-expansion-panel class="totvs-panel-filter">
       <mat-expansion-panel-header>
         <mat-panel-title>
-          Name filter
+          Filtro de usuários
         </mat-panel-title>
-        <mat-panel-description>
-          Type your name and age
-          <mat-icon>account_circle</mat-icon>
-        </mat-panel-description>
       </mat-expansion-panel-header>
 
-      <form name="usersFilterForm" role="form" [formGroup]="usersFilterForm">
+      <form name="usersFilterForm" role="form" [formGroup]="usersFilterForm" class="totvs-form-filter">
         <mat-form-field>
           <mat-label>ID</mat-label>
           <input matInput (keyup)="applyFilter()" formControlName="id" #input>
