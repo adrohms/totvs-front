@@ -34,7 +34,6 @@ export class LoginComponent implements OnInit {
     return this.loginForm.get('email');
   }
 
-
   public authenticate(): void {
     this.loginService.login(this.loginForm.value).subscribe({
       next: response => {
@@ -42,7 +41,6 @@ export class LoginComponent implements OnInit {
         this.authenticationError = false;
         this.toastr.success("Autenticado com sucesso!")
         if (!this.router.getCurrentNavigation()) {
-          // There were no routing during login (eg from navigationToStoredUrl)
           this.router.navigate(['']);
         }
       },
@@ -51,5 +49,10 @@ export class LoginComponent implements OnInit {
         this.toastr.error("Login ou senha inválidos.")
       },
     });
+  }
+
+  //TODO: Implementar fluxo de recuperação de senha
+  forgottenPassword(): void {
+    this.toastr.info('Fluxo ainda não implementado!')
   }
 }

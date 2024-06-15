@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PersonFormService } from 'src/app/shared/components/person-form/person-form.service';
 import { RegisterService } from './register.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'totvs-register',
@@ -16,7 +17,8 @@ export class RegisterComponent {
   constructor(
     private fb: FormBuilder,
     private personFormService: PersonFormService,
-    private registerService: RegisterService
+    private registerService: RegisterService,
+    private toastr: ToastrService
   ) {
     this.registrationFormGroup = this.fb.group({
       // Add other registration fields
@@ -39,10 +41,10 @@ export class RegisterComponent {
 
     this.registerService.save(this.registrationFormGroup.value).subscribe(
       (response) => {
-        console.log('Request successful:', response);
+        this.toastr.success('Usuário criado com sucesso, aguarde aprovação!');
       },
       (error) => {
-        console.error('Error:', error);
+        this.toastr.error('Error:', error);
       }
     );
   }

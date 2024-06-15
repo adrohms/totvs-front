@@ -6,23 +6,23 @@ import { NgControl } from '@angular/forms';
 })
 export class CnpjFormatterDirective {
 
-
   constructor(private el: ElementRef, private renderer: Renderer2, private control: NgControl) {}
 
   @HostListener('input', ['$event'])
   onInput(event: any): void {
     let input = event.target;
-    let value = input.value.replace(/\D/g, ''); // Remove non-numeric characters
+    let unformatedValue = input.value.replace(/\D/g, ''); // Remove non-numeric characters
+    let formatedValue;
 
     // Format as 12.344.567/0001-23
-    if (value.length > 0) {
-      value = value.replace(/^(\d{2})(\d{3})(\d{3})(\d{4})(\d{2}).*$/, '$1.$2.$3/$4-$5');
+    if (unformatedValue.length > 0) {
+      formatedValue = unformatedValue.replace(/^(\d{2})(\d{3})(\d{3})(\d{4})(\d{2}).*$/, '$1.$2.$3/$4-$5');
     }
 
-    this.renderer.setProperty(input, 'value', value);
+    this.renderer.setProperty(input, 'value', formatedValue);
 
     // Update the form control's value without formatting
-    this.control.control?.setValue(value);
+    this.control.control?.setValue(unformatedValue);
   }
 
   @HostListener('blur', ['$event'])

@@ -22,18 +22,18 @@
       <mat-form-field>
         <div>
           <label>Email:</label >
-          <input matInput formControlName="email" type="email">
+          <input matInput formControlName="email" type="email" required>
         </div>
       </mat-form-field>
 
       <mat-form-field *ngIf="selectedPersonType">
         <div *ngIf="selectedPersonType == 'NATURAL_PERSON'; else elseBlock">
           <label>CPF</label>
-          <input matInput formControlName="taxId" totvsCpfFormatter>
+          <input matInput formControlName="taxId" totvsCpfFormatter maxlength="11" minlength="11">
         </div>
         <ng-template #elseBlock>
           <label>CNPJ</label>
-          <input matInput formControlName="taxId" totvsCnpjFormatter>
+          <input matInput formControlName="taxId" totvsCnpjFormatter maxlength="14" minlength="14">
         </ng-template>
       </mat-form-field>
     </div>

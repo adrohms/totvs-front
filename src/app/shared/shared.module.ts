@@ -32,6 +32,8 @@ import { CpfFormatterDirective } from './directives/cpf-formatter.directive';
 import { HasAnyAuthorityDirective } from './directives/has-any-authority.directive';
 import { ThemeDirective } from './directives/theme.directive';
 import { EnumValuesPipe } from './pipes/enum-values.pipe';
+import { PhoneFormatterDirective } from './directives/phone-formatter.directive';
+import { ZipCodeFormatterDirective } from './directives/zip-code-formatter.directive';
 
 @NgModule({
   imports: [
@@ -66,6 +68,8 @@ import { EnumValuesPipe } from './pipes/enum-values.pipe';
     EnumValuesPipe,
     CpfFormatterDirective,
     CnpjFormatterDirective,
+    PhoneFormatterDirective,
+    ZipCodeFormatterDirective,
     ThemeDirective,
     HasAnyAuthorityDirective,
     PersonFormComponent,
@@ -105,6 +109,8 @@ import { EnumValuesPipe } from './pipes/enum-values.pipe';
     EnumValuesPipe,
     CpfFormatterDirective,
     CnpjFormatterDirective,
+    PhoneFormatterDirective,
+    ZipCodeFormatterDirective,
     ThemeDirective,
     PersonFormComponent,
     AddressFormComponent,

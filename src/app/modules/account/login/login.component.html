@@ -24,10 +24,10 @@
       </div>
 
       <mat-divider style="margin-bottom: 8px;"></mat-divider>
-      <div class="totvs-recover-register">
-        <button mat-stroked-button color="primary" routerLink="/account/register">Registrar</button>
-        <button mat-stroked-button color="primary" routerLink="/account/recover-password">Esqueci minha senha</button>
-      </div>
     </form>
+    <div class="totvs-recover-register">
+      <button mat-stroked-button color="primary" routerLink="/account/register">Registrar</button>
+      <button mat-stroked-button color="primary" (click)="forgottenPassword()">Esqueci minha senha</button>
+    </div>
   </mat-card-content>
 </mat-card>

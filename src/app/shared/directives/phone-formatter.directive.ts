@@ -1,12 +1,10 @@
-import { Directive, ElementRef, HostListener, Renderer2 } from '@angular/core';
+import { Directive, ElementRef, HostListener, Input, Renderer2 } from '@angular/core';
 import { NgControl } from '@angular/forms';
 
 @Directive({
-  selector: '[totvsCpfFormatter]'
+  selector: '[totvsPhoneFormatter]'
 })
-export class CpfFormatterDirective {
-
-
+export class PhoneFormatterDirective {
   constructor(private el: ElementRef, private renderer: Renderer2, private control: NgControl) {}
 
   @HostListener('input', ['$event'])
@@ -15,9 +13,9 @@ export class CpfFormatterDirective {
     let unformatedValue = input.value.replace(/\D/g, ''); // Remove non-numeric characters
     let formatedValue;
 
-    // Format as 123.456.789-09
+    // Format as (XX) XXXXX-XXXX
     if (unformatedValue.length > 0) {
-      formatedValue = unformatedValue.replace(/^(\d{3})(\d{3})(\d{3})(\d{2}).*$/, '$1.$2.$3-$4');
+      formatedValue = unformatedValue.replace(/^(\d{2})(\d{5})(\d{4}).*$/, '($1) $2-$3');
     }
 
     this.renderer.setProperty(input, 'value', formatedValue);
@@ -33,7 +31,7 @@ export class CpfFormatterDirective {
     let value = input.value.replace(/\D/g, ''); // Remove non-numeric characters
 
     if (value.length > 0) {
-      value = value.replace(/^(\d{3})(\d{3})(\d{3})(\d{2}).*$/, '$1.$2.$3-$4');
+      value = value.replace(/^(\d{2})(\d{5})(\d{4}).*$/, '($1) $2-$3');
     }
 
     this.renderer.setProperty(input, 'value', value);
