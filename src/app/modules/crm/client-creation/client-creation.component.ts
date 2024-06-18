@@ -39,7 +39,6 @@ export class ClientCreationComponent implements OnInit  {
   }
 
   saveClient(): void {
-    console.log(this.clientFormGroup.value);
     this.crmService.save(this.clientFormGroup.value).subscribe(
       (response) => {
         this.toastr.success('Cliente salvo com sucesso!');

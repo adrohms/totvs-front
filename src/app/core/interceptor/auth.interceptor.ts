@@ -1,4 +1,4 @@
-import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from '@angular/common/http';
+import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -12,7 +12,7 @@ export class AuthInterceptor implements HttpInterceptor {
   constructor(
     private router: Router,
     private toastr: ToastrService,
-    private authService: AccountService
+    private authService: AccountService,
   ) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -25,6 +25,7 @@ export class AuthInterceptor implements HttpInterceptor {
     return next.handle(clonedRequest).pipe(
       tap((event: any) => {},
       (error: any) => {
+
         if (error instanceof HttpErrorResponse && error.status === 401) {
           // Handle unauthorized error here
           this.authService.authenticate(null);

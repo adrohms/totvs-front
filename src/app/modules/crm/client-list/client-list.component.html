@@ -9,9 +9,6 @@
         <mat-panel-title>
           Filtro de clientes
         </mat-panel-title>
-        <mat-panel-description>
-          <mat-icon>list</mat-icon>
-        </mat-panel-description>
       </mat-expansion-panel-header>
 
       <form name="clientFilterForm" role="form" [formGroup]="clientFilterForm" class="totvs-client-filter">
@@ -66,10 +63,22 @@
           <th mat-header-cell *matHeaderCellDef> Visualizar </th>
           <td mat-cell *matCellDef="let client">
             <button mat-mini-fab color="primary"
-              aria-label="Visualizar perfil do usuário"
-              matTooltip="Visualizar perfil do usuário"
+              aria-label="Visualizar perfil do cliente"
+              matTooltip="Visualizar perfil do cliente"
               (click)="openClientProfile(client)">
               <mat-icon>open_in_new</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="delete">
+          <th mat-header-cell *matHeaderCellDef> Deletar </th>
+          <td mat-cell *matCellDef="let client">
+            <button mat-mini-fab color="primary"
+              aria-label="Deletar perfil do cliente"
+              matTooltip="Deletar perfil do cliente"
+              (click)="deleteClient(client)">
+              <mat-icon>delete</mat-icon>
             </button>
           </td>
         </ng-container>

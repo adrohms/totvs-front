@@ -11,10 +11,12 @@ export const routeAccessGuard: CanActivateFn = (route, state) => {
   const accountService = inject(AccountService);
   const stateStorageService = inject(StateStorageService);
   const router = inject(Router);
+
   return accountService.identity().pipe(
     map((account: Account | null) => {
-      stateStorageService.getExpiration();
+
       if (account) {
+
         const authorities = route.data['authorities'];
 
         if (!authorities || authorities.length === 0 || accountService.hasAnyAuthority(authorities)) {
@@ -30,5 +32,4 @@ export const routeAccessGuard: CanActivateFn = (route, state) => {
       return false;
     })
   );
-
 };

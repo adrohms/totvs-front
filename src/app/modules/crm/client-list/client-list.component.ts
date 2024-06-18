@@ -5,12 +5,13 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { catchError, map, merge, of, startWith, switchMap } from 'rxjs';
-import { AccountService } from 'src/app/core/auth/account.service';
-import { IPerson } from 'src/app/shared/models/person.model';
+import { IClient } from 'src/app/shared/models/client.model';
 import { ClientCreationComponent } from '../client-creation/client-creation.component';
+import { ClientDetailComponent } from '../client-detail/client-detail.component';
 import { CrmService } from '../crm.service';
+import { ConfirmationDialogComponent } from 'src/app/shared/components/confirmation-dialog/confirmation-dialog.component';
 
 @Component({
   selector: 'totvs-client-list',
@@ -19,7 +20,7 @@ import { CrmService } from '../crm.service';
 })
 export class ClientListComponent implements OnInit, AfterViewInit {
   public dataSource: any;
-  public displayedColumns: string[] = ['id', 'name', 'email', 'view'];
+  public displayedColumns: string[] = ['id', 'name', 'email', 'view', 'delete'];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   resultsLength = 0;
@@ -29,10 +30,8 @@ export class ClientListComponent implements OnInit, AfterViewInit {
 
   constructor(
     private crmService: CrmService,
-    private accountService: AccountService,
-    private activatedRoute: ActivatedRoute,
-    private router: Router,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private toastr: ToastrService
   ) {
   }
 
@@ -88,9 +87,15 @@ export class ClientListComponent implements OnInit, AfterViewInit {
     });
   }
 
-  openClientProfile(selectedUser: IPerson): void {
-    console.log(selectedUser);
-    this.router.navigate([`/${selectedUser?.id}`])
+  openClientProfile(selectedClient: IClient): void {
+    const dialogRef = this.dialog.open(ClientDetailComponent, {
+        data: { id: selectedClient.id }
+      }
+    );
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
   createClient(): void {
@@ -99,6 +104,31 @@ export class ClientListComponent implements OnInit, AfterViewInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
+  }
+
+  deleteClient(client: IClient): void {
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      data: {
+        title: 'Deletar Cliente',
+        message: `Todos os dados do cliente ${client.person?.name} serão apagados. Deseja continuar?`,
+        content: client
+      }
+    })
+
+    dialogRef.afterClosed().subscribe((result: {resp: Boolean; content: IClient | null}) => {
+      if(result.resp) {
+        this.crmService.delete(result.content!.id!).subscribe(
+          (response) => {
+            this.toastr.success('Cliente deletado com sucesso!');
+          },
+          (error) => {
+            this.toastr.error('Erro:', error.error.message);
+          }
+        );
+      }
+    })
+
+
   }
 
   private createParamFromForm(): HttpParams {

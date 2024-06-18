@@ -6,7 +6,7 @@ export const homeRouting: Route[] = [
     path: '',
     component: HomeComponent,
     data: {
-      pageTitle: 'totvs Gerenciamento',
+      pageTitle: 'Home Page',
     },
   }
 ];

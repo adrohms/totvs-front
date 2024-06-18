@@ -90,7 +90,6 @@ export class UserManagementComponent implements OnInit, AfterViewInit {
   }
 
   openUserProfile(selectedUser: UserMngtVM): void {
-    console.log(selectedUser);
     this.router.navigate([`/${selectedUser?.id}`])
   }
 

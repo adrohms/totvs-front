@@ -34,6 +34,7 @@ import { ThemeDirective } from './directives/theme.directive';
 import { EnumValuesPipe } from './pipes/enum-values.pipe';
 import { PhoneFormatterDirective } from './directives/phone-formatter.directive';
 import { ZipCodeFormatterDirective } from './directives/zip-code-formatter.directive';
+import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
 
 @NgModule({
   imports: [
@@ -74,7 +75,8 @@ import { ZipCodeFormatterDirective } from './directives/zip-code-formatter.direc
     HasAnyAuthorityDirective,
     PersonFormComponent,
     AddressFormComponent,
-    PhoneFormComponent
+    PhoneFormComponent,
+    ConfirmationDialogComponent
   ],
   exports: [
     CommonModule,
@@ -115,6 +117,7 @@ import { ZipCodeFormatterDirective } from './directives/zip-code-formatter.direc
     PersonFormComponent,
     AddressFormComponent,
     PhoneFormComponent,
+    ConfirmationDialogComponent,
     HasAnyAuthorityDirective
   ]
 })

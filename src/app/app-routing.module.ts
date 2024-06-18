@@ -4,12 +4,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { routeAccessGuard } from './core/auth/user-route-access.guard';
 
 const routes: Routes = [
+  { path: '', redirectTo: '/landing-page', pathMatch: 'full' },
   {
-    path: '',
-    loadChildren: () => import('./home/home.module').then(m => m.HomeModule),
-    data: {
-      authorities: ['USER','ADMIN']
-    },
+    path: 'landing-page',
+    loadChildren: () => import('./layout/home/home.module').then(m => m.HomeModule),
+  },
+  {
+    path: 'home',
+    loadChildren: () => import('./layout/home/home.module').then(m => m.HomeModule),
     canActivate: [routeAccessGuard]
   },
   {
@@ -20,7 +22,7 @@ const routes: Routes = [
     path: 'crm',
     loadChildren: () => import('./modules/crm/crm.module').then(m => m.CrmModule),
     data: {
-      authorities: ['USER','ADMIN']
+      authorities: ['USER']
     },
     canActivate: [routeAccessGuard]
   }

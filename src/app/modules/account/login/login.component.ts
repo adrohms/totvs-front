@@ -37,11 +37,10 @@ export class LoginComponent implements OnInit {
   public authenticate(): void {
     this.loginService.login(this.loginForm.value).subscribe({
       next: response => {
-        console.log(response);
         this.authenticationError = false;
         this.toastr.success("Autenticado com sucesso!")
         if (!this.router.getCurrentNavigation()) {
-          this.router.navigate(['']);
+          this.router.navigate(['home']);
         }
       },
       error: () => {

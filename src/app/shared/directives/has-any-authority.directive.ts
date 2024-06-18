@@ -11,9 +11,9 @@ import { AccountService } from 'src/app/core/auth/account.service';
  *
  * @howToUse
  * ```
- *     <some-element *maxHasAnyAuthority="'ROLE_ADMIN'">...</some-element>
+ *     <some-element *maxHasAnyAuthority="'ADMIN'">...</some-element>
  *
- *     <some-element *maxHasAnyAuthority="['ROLE_ADMIN', 'ROLE_USER']">...</some-element>
+ *     <some-element *maxHasAnyAuthority="['ADMIN', 'USER']">...</some-element>
  * ```
  */
 @Directive({

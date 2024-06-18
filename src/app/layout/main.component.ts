@@ -1,5 +1,5 @@
 import { MediaMatcher } from '@angular/cdk/layout';
-import { ChangeDetectorRef, Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, OnDestroy, ViewChild, AfterViewInit } from '@angular/core';
 import { MatSidenav, MatSidenavContainer } from '@angular/material/sidenav';
 import { AccountService } from '../core/auth/account.service';
 import { Router } from '@angular/router';
@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss']
 })
-export class MainComponent implements OnInit, OnDestroy {
+export class MainComponent implements AfterViewInit, OnDestroy {
 
   private _mobileQueryListener: () => void;
 
@@ -30,10 +30,11 @@ export class MainComponent implements OnInit, OnDestroy {
     this.mobileQuery = media.matchMedia('(totvs-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
-    this.mobileQuery.addEventListener
+    this.mobileQuery.addEventListener;
+
   }
 
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
     this.accountService.getAuthenticationState().subscribe(acc => {
       if(acc) this.isAuthenticated = true;
     })
@@ -41,10 +42,6 @@ export class MainComponent implements OnInit, OnDestroy {
 
   public get isSidebarClosedAndIsAutenticated(): boolean {
     return this.isSidebarClosed && this.isAuthenticated;
-  }
-
-  public get routerLinkByAuthentication(): string {
-    return this.isAuthenticated ? "" : "/account/login";
   }
 
   ngOnDestroy(): void {

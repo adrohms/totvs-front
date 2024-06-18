@@ -1,0 +1,10 @@
+<mat-dialog-content class="mat-typography">
+  <h1 mat-dialog-title>{{ data.title }}</h1>
+  <div mat-dialog-content>
+    <p>{{ data.message }}</p>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button color="primary" (click)="onConfirmClick()">Confirmar</button>
+    <button mat-button (click)="onCancelClick()">Cancelar</button>
+  </div>
+</mat-dialog-content>

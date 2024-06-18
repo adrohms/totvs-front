@@ -11,6 +11,7 @@ import { NgxWebstorageModule } from 'ngx-webstorage';
 import { FooterComponent } from './layout/footer/footer.component';
 import { MainComponent } from './layout/main.component';
 import { SharedModule } from './shared/shared.module';
+import { HomeComponent } from './layout/home/home.component';
 
 @NgModule({
   declarations: [

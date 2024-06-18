@@ -19,8 +19,16 @@ export class CrmService {
     return this.http.post(`${this.resourceUrl}/client/create`, client);
   }
 
-  find(login: string): Observable<IPerson> {
-    return this.http.get<IPerson>(`${this.resourceUrl}/${login}`);
+  update(client: IClient): Observable<{}> {
+    return this.http.put<IClient>(`${this.resourceUrl}/client/${client.id}`, client);
+  }
+
+  delete(id: number): Observable<{}> {
+    return this.http.delete(`${this.resourceUrl}/client/${id}`);
+  }
+
+  find(id: string): Observable<IClient> {
+    return this.http.get<IClient>(`${this.resourceUrl}/client/${id}`);
   }
 
   findAllByFilter(params: HttpParams): Observable<IPage<IClient[]>> {
